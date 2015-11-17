@@ -18,7 +18,7 @@ x0 = 1; //Define nearest distance to plot in meters
 x1 = 20; //Define farthest distance to plot in meters
 
 //define steps
-step = 1; //define step for plotting in meters
+step = 0.1; //define step for plotting in meters
 
 //Width Angle for this lense
 Angle_w = 2*(atan(Sp*Sw/(2*f))); //Angle W in radians
@@ -28,6 +28,7 @@ Angle_h = 2*(atan(Sp*Sh/(2*f))); //Angle H in radians
 x=[x0:step:x1];
 
 //obtains pixels for each distance
+index = 1;
 for i=x0:step:x1
     //Get image width for current distance
     Hip_w = i /(cos(Angle_w/2)); //Get valu of Hipot angle w
@@ -41,7 +42,9 @@ for i=x0:step:x1
     ML_h_pixels = floor(Sh * (ML_h /Image_h));//Obtain Mona Lisa height pixels as proportion of total image
     
     //Number of Pixels = Width pixels x Height pixels
-    y(i)= ML_w_pixels * ML_h_pixels;
+    y(index)= ML_w_pixels * ML_h_pixels;
+    
+    index = index + 1;
 end
 
 
